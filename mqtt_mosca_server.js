@@ -2,15 +2,12 @@
 var mosca = require('mosca');
 
 var settings = {
-  port: process.env.PORT || 1883
+  port: 1883
   //backend: ascoltatore
 };
 //紀錄有上線的power
 var onlinePower = new Object();
-
-
 var server = new mosca.Server(settings);
-
 server.on('clientConnected', function(client) {
     console.log('client connected', client.id);
 		
@@ -33,7 +30,6 @@ server.on('clientConnected', function(client) {
 			onlinePId.push(p_id);
 			onlinePower[m_id] = onlinePId;	
 		}
-		
 	}
 	
 	//debug print
@@ -158,8 +154,6 @@ server.on('published', function(packet, client) {
 	} catch (e) {
 		console.log("not JSON");
 	}
-
-  
 });
 
 server.on('ready', setup);
