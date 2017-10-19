@@ -161,4 +161,8 @@ server.on('ready', setup);
 // fired when the mqtt server is ready
 function setup() {
   console.log('Mosca server is up and running');
+  console.log('process.env.PORT:' + process.env.PORT);
+  console.log('process.env.OPENSHIFT_NODEJS_PORT:' + process.env.OPENSHIFT_NODEJS_PORT);
+  console.log('process.env.IP:' + process.env.IP);
+  console.log('process.env.OPENSHIFT_NODEJS_IP:' + process.env.OPENSHIFT_NODEJS_IP);
 }
