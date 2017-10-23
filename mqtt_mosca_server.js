@@ -2,7 +2,7 @@
 var mosca = require('mosca');
 
 var settings = {
-  port: 1883
+  port: 1884
   //backend: ascoltatore
 };
 //紀錄有上線的power
