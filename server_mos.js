@@ -16,6 +16,22 @@ Object.assign=require('object-assign')
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
 app.listen(3000)
+
+
+server.on('ready', setup);
+
+// fired when the mqtt server is ready
+function setup() {
+  console.log('Mosca server is up and running');
+  console.log('process.env.PORT:' + process.env.PORT);
+  console.log('process.env.OPENSHIFT_NODEJS_PORT:' + process.env.OPENSHIFT_NODEJS_PORT);
+  console.log('process.env.IP:' + process.env.IP);
+  console.log('process.env.OPENSHIFT_NODEJS_IP:' + process.env.OPENSHIFT_NODEJS_IP);
+}
+
+server.on('clientConnected', function(client) {
+    console.log('client connected', client.id);
+});
 /*
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
