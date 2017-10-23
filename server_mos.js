@@ -4,7 +4,7 @@ var express = require('express'),
     morgan  = require('morgan');
     
 var mosca = require("mosca");
-var broker = new mosca.Server({});
+var server = new mosca.Server({});
 var http = require("http");
 var srv = http.createServer(app)
 var path = require("path");
