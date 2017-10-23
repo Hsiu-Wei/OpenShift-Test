@@ -3,7 +3,7 @@ var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
     
-var mosca = require("mosca");
+var mosca = require("mosca");server
 var server = new mosca.Server({});
 var http = require("http");
 var srv = http.createServer(app)
@@ -15,7 +15,12 @@ Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
-app.listen(3000)
+
+
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+
+app.listen(port, ip);
 
 
 server.on('ready', setup);
